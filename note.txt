@@ -18,3 +18,20 @@ vue website (single page applcation) (full)
 ##environment
 -vscode extension: live server,vetur
 
+##lesson1
+stand alone widget
+-create html page (index.html)
+-right click html then open with liver server
+-cdn link
+<script src="https://unpkg.com/vue@3"></script>
+-create app.js to keep vue code
+-vue not use semicolon
+
+1.component in vue (data,methods,template)
+2.dynamic rendering {{}}
+3.v-on:click=""
+4.@click=""
+5.v-if=""
+6.v-else
+7.v-show
+
