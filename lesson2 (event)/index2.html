@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body{
+            background:#eee;
+            max-width:960px;
+            margin:20px auto;
+        }
+        p, h3, ul{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+            background: #fff;
+            margin:20px auto;
+            padding:10px 20px;
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
+        }
+        img{
+            width: 50px;
+            height: 50px;
+        }
+        li.fav{
+            background: #ff9ed2;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <p>filteredBooks</p>
+
+        <!-- attribute binding -->
+        <!-- v-bind -->
+        <a v-bind:href="url">google</a>
+        <!-- short cut of v-bind : -->
+        <a :href="url">google2</a>
+
+        <div v-if="showBooks">
+            <!-- <p>{{books[0].title}} - {{books[0].author}}</p>
+            <p>{{books[1].title}} - {{books[1].author}}</p>
+            <p>{{books[2].title}} - {{books[2].author}}</p> -->
+            <ul>
+                <!-- for each item in books, item is a variable -->
+                <!-- conditional class if book.isFav true then has class fav -->
+                <li v-for="book in books" :class="{fav: book.isFav}" @click="toggleFav(book)">
+                    <img :src="book.img" :alt="book.title">
+                    <h3>{{book.title}}</h3>
+                    <p>{{book.author}}</p>
+
+                </li>
+                <br>
+                <!-- loop through the new array in computed filteredBooks2 -->
+                <li v-for="book in filteredBooks2" :class="{fav: book.isFav}" @click="toggleFav(book)">
+                    <img :src="book.img" :alt="book.title">
+                    <h3>{{book.title}}</h3>
+                    <p>{{book.author}}</p>
+
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+    
+    <script src="app2.js"></script>
+</body>
+</html>

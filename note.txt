@@ -35,3 +35,10 @@ stand alone widget
 6.v-else
 7.v-show
 
+##lesson2
+1. mouse event handling
+2. attribute binding v-bind
+3. v-for
+4. conditional class
+5. computed propertises (depend on data, create and manipulate new array)
+6. access list

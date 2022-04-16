@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .box{
+            padding:100px 0;
+            width:400px;
+            text-align:center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- mouse event -->
+        <!-- $event force the event to be the first object -->
+        <div class="box" @mouseover="handleEvent($event,5)">mouseover</div>
+        <div class="box" @mouseleave="handleEvent">mouseleave</div>
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMousemove">position - {{x}} {{y}}</div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
