@@ -1,0 +1,20 @@
+##intoduction
+two way of using vue (1. stand alone widget 2. full website)
+vue widget or components
+vue website (single page applcation) (full)
+-single html page sent (initially)
+-not constantly sent request to server
+-vue js bundle to render vue components
+-linking and routing
+-faster and smoother
+
+##vue 3 new features
+-composition api
+-multiple root elements (side-by-side in a component)
+-teleport component (render content from one compoent in a different place)
+-suspense component
+-typescript support
+
+##environment
+-vscode extension: live server,vetur
+
