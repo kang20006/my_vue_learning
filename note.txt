@@ -42,3 +42,62 @@ stand alone widget
 4. conditional class
 5. computed propertises (depend on data, create and manipulate new array)
 6. access list
+
+##lesson3
+vue cli
+use modern javascript features
+live reload dev server
+optimize code
+#to install
+1. install node.js
+2. npm install -g @vue/cli
+#create vue project
+1. vue create model-project
+2. manually select features
+3. unselect linter
+4. save babel in dedicated config file
+
+#project file walk through
+1. node_modules store dependencies, vue library
+2. public consists of index.html
+3. src source folder, store components, template, css
+ have main.js that kicks start our application
+ import {createApp} from 'vue'
+ take function createApp from vue library in node_modules
+ import App from ./App.vue
+ App is the root component
+ createApp(App).mount('#app') mount it to DOM with id app
+ App.vue
+ consists of template, script, style
+4. babel config config so that we can use certain javascript features
+5. package.json tack all our dependencies
+
+start up local development server
+cd to directory
+npm run serve
+
+we must have separate different component in different file
+'footer,header,....'
+can have as many root component in the template for vue3
+
+npm install 
+to install the node node_modules listed in package.json
+
+#template refs
+not query selector
+template refs
+<input type="text" ref="name">
+access the refs
+handleClick(){
+      console.log(this.$refs.name)
+    }
+
+#multiple components
+store in the components file
+App.vue is the root component (parent component)
+Header.vue,Footer.vue,... nested in root component (child component)
+
+##lesson4
+scopped css and global css
+
+
