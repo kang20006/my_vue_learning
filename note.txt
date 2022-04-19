@@ -168,3 +168,54 @@ make certain html component outside the div with id app
 </teleport>
 in the html
 <div class="modals"></div>
+
+
+##lesson5
+reaction timer
+#quickly show template, export defalut,.....
+type vue choose first one
+:disabled="isPlaying" js properties to diable button
+
+#lifecycle hooks
+mounted{} -> updated{} -> unmounted{}
+
+first we put in delay as a props
+when a component mounted
+we start a time out
+fire that code after the amount of time
+after the amount of time we let showblock to be true
+then the green block show on the screen
+and start the timer
+// every 10 ms + 10 to the reactionTime
+// start right after showBlock true
+    startTimer(){
+            this.timer=setInterval( ()=>{
+                this.reactionTime +=10
+            },10 )
+        },
+// clear the timer when click
+    stopTimer(){
+            clearInterval(this.timer)
+            console.log(this.reactionTime)
+        },
+    }
+
+#customer event with data
+how to fecth the data from the child back to parent
+in MyBlock when stopTimer triger it emit a signal end
+it bring along the this.reactionTime
+stopTimer(){
+            clearInterval(this.timer)
+            console.log(this.reactionTime)
+            // pass along the this.reactionTime
+            this.$emit('end',this.reactionTime)
+        },
+
+in App when signal end detected
+<MyBlock v-if="isPlaying" :delay="delay" @end="endGame"/>
+endGame(reactionTime){
+      this.score=reactionTime
+      this.isPlaying=false
+      this.showResult=true
+    }
+save the reaction time in score
