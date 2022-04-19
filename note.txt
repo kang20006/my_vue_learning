@@ -98,6 +98,73 @@ App.vue is the root component (parent component)
 Header.vue,Footer.vue,... nested in root component (child component)
 
 ##lesson4
-scopped css and global css
+#scopped css and global css
+<style> vs <style scoped>
+advisible to use <style> only
+if aim for specific component use .model h1
+create global.css in assets
+import it into main.js
+import './assets/global.css'
 
+#prop
+pass data from parent to child component
+make component more reusable
+multiple component use same data, we only need to define the data in single place
 
+<MyModal header="Sign up for the Give Away!"/>
+props:['header']
+<h1>{{ header }}</h1>
+we can only pass in string
+
+to use other than string we need data binding
+i.e array
+<MyModal :header="['AAA',4]"/>
+
+we can also dynamically insert class
+
+<div class="modal" :class="{sale:theme==='sale'}">
+<MyModal :header="header" :text="text" theme="sale"/>
+
+#custom events
+we dont have access of method in other component
+custom event can be fired from a child component and listen to parent component
+in model:
+- <div class="backdrop" @click="closeModal"> 
+- closeModal(){
+          this.$emit('close')
+      }
+(when click on div trigger closeModal function then emit colse event)
+in App:
+-<MyModal :header="header" :text="text" theme="sale" @close="toggleModal"/>
+(when close event happened it trigger function toggleModal in App)
+
+#click event modifier
+-@click.right
+-@click.shift
+-@click.alt
+-@click.self (click on self not other element in it)
+
+#slots
+-if we have form we cant pass whole form into the props
+-put in custom template
+-pass template into component
+-default content will only show if we didnt pass in any content inside
+<slot>default contents</slot>
+will pass into everything inside tag <MyModal><MyModal/>
+
+#name slots
+useful when you have certain structure inside component 
+<template v-slt:links>
+        <a href="a">sign up now</a>
+        <a href="a">more info</a>
+</template>
+<slot name="links"></slot>
+
+#teleport
+make certain html component outside the div with id app
+<teleport to=".modals" v-if="showModal">
+    <MyModal :header="header" :text="text" theme="sale" @close="toggleModal">
+    </MyModal>
+</teleport>
+in the html
+<div class="modals"></div>
