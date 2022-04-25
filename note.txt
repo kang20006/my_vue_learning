@@ -312,7 +312,113 @@ deleteSkill(skill){
 when click the button, it will submit form
 html form attribute will refresh the page
 to overwrite the default event we will addd a submit event onto the form
+<form @submit.prevent="handleSubmit">
 
+##lesson7
+#different router page
+#set up a new vue project with vue router
+- in cli select Router
+-do you want to use history mode for router? (Y)
+-another version is hash mode
+-package.json has new dependenciy 'vue-router'
+-src folder there is a router with index.js
+-each route has 3 properties:
+1. path url path
+2. name
+3. component (need to import)
+-route instant (usually no need to change)
+1. history createwebhistory to create next and previous
+2. routes
+-export the router the router is being use in main.js
+-in App.vue we can see <router-view/>
+-this is a vue router special tag, not need import any tag
+-for example if we navigate to '/' Home component will be render to the <router-view/>
+
+#route link
+-vue intercept the request
+<router-link to="/">Home</router-link> 
+-this did not do the same, this will send request to the server
+<a href="/about">about</a>
+- we can style the router link
+#nav a.router-link-exact-active
+
+#folder structure
+for small project stick to default folder arrangement, all router place in the view folder
+-we build as sub-folder in views for sub component for a router
+-for component which is not page specific (can use in different page) place it inside components folder
+
+#route parameter
+example of sub route
+/jobs/123
+-123 is a id of jobs
+changable route is called route parameter
+/jobs/:id
+index.js
+{
+    path: '/jobs/:id',
+    name: 'jobdetails',
+    component:JobDetails
+  }
+jobdetails.vue
+data(){
+        return{
+            id: this.$route.params.id
+        }
+ }
+we need access route parameter in the component
+{{$route.params.id}}
+
+#dynamic route
+<div v-for="job in jobs" :key="job.id">
+        <router-link :to="{name:'jobdetails',params:{id:job.id}}">
+            {{job.title}}
+        </router-link>
+        
+</div>
+
+we can pass in route parameter as props
+index.js
+ {
+    path: '/jobs/:id',
+    name: 'jobdetails',
+    component:JobDetails,
+    props: true
+  }
+jobdetails.vue
+props:['id']
+{{id}}
+
+#redirect and 404 page
+redirect old page to new route
+
+catch put route
+to redirect the inexist page to other page
+if direct to page that is not exist go to this
+{
+    path:'/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound,
+  }
+
+#programmatic nav
+$route refers to current route
+$router to perform some function
+
+go forward one step
+forward(){
+      this.$router.go(1)
+    }
+
+go back one step
+back(){
+      // go back -1 to history
+      this.$router.go(-1)
+    }
+
+redirect to home page
+redirect(){
+      this.$router.push({name:'home'})
+    }
 
 
 
