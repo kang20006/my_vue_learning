@@ -312,7 +312,7 @@ deleteSkill(skill){
 when click the button, it will submit form
 html form attribute will refresh the page
 to overwrite the default event we will addd a submit event onto the form
-
+<form @submit.prevent="handleSubmit">
 
 
 
