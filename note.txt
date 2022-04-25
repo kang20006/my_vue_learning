@@ -219,3 +219,101 @@ endGame(reactionTime){
       this.showResult=true
     }
 save the reaction time in score
+
+##lesson6
+#buid form
+<form>
+  <label>Email:</label>
+  <input type="email" required>
+</form>
+
+#two way binding
+v-model
+bind data to data properties and also other way in the template
+<input type="email" required v-model="email">
+data(){
+        return{
+            // two properties tracking two input
+            email:'//default vaue',
+            password:'',
+        }
+}
+
+#selector
+<select v-model="role">
+            <option value="developer">Web Developer</option>
+            <option value="designer">Web Designer</option>
+        </select>
+
+#checkbox (binary)
+<div class="terms">
+            <input type="checkbox" v-model="terms" required>
+            <label>Accept terms and conditions</label>
+</div>
+terms: false,
+
+#checkbox (list)
+<div>
+            <input type="checkbox" value="shaun" v-model="names">
+            <label>Shaun</label>
+        </div>
+        <div>
+            <input type="checkbox" value="yoshi" v-model="names">
+            <label>Yoshi</label>
+        </div>
+        <div>
+            <input type="checkbox" value="mario" v-model="names">
+            <label>Mario</label>
+        </div>
+names: [],
+
+#keyboard event
+@keyup="addSkill"
+@keydown
+@keypress
+
+-log the event onject
+addSkill(e){
+           console.log(e)
+       } 
+-when we press ','
+
+KeyboardEvent {isTrusted: true, key: ",", code: "Comma", location: 0, ctrlKey: false, …}
+
+-add tempSkill into skill array when user press ','
+addSkill(e){
+        //    if the user press , and the tempSkill has value
+           if (e.key===',' && this.tempSkill){
+            //    add to the skill array
+               this.skills.push(this.tempSkill)
+               this.tempSkill=''
+           }
+       } 
+
+-add into array 
+this.array.push(this.newitem)
+
+-check whether an item is not in array
+if(!this.array.includes(this.item))
+
+#delete event
+-catch the clicked skill
+-add arguement into the function
+<span @click="deleteSkill(skill)">{{skill}}</span>
+-filter function cycle through each item in the array, if we return true for an item in the array then we keep the item else remove the item
+deleteSkill(skill){
+            
+            this.skills=this.skills.filter((item)=>{
+                return skill !== item
+            })
+        }
+
+#submit button 
+when click the button, it will submit form
+html form attribute will refresh the page
+to overwrite the default event we will addd a submit event onto the form
+
+
+
+
+
